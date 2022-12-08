@@ -73,13 +73,13 @@ public class Client {
                         break;
                     case 4:
                         result = "";
-                        int a = 6;
+                        int a = 2;
                         System.out.println("NAME: " + name + "\nUSERNAME: " + username);
                         System.out.println("ENTRIES:");
                         System.out.println("WITHDRAW  DEPOSIT  BALANCE");
-                        //while((result.compareToIgnoreCase("Done"))==0)
-                        while (a > 0) {
-                            a--;//only for 4 entries
+                        while(!(result.equals("Done"))){
+//                        while (a > 0) {
+                            //a--;//only for 4 entries
                             result = serverinput.readLine();
                             System.out.println(result);
                         }
