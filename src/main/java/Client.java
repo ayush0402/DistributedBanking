@@ -73,7 +73,7 @@ public class Client {
                         break;
                     case 4:
                         result = "";
-                        int a = 2;
+                        // int a = 2;
                         System.out.println("NAME: " + name + "\nUSERNAME: " + username);
                         System.out.println("ENTRIES:");
                         System.out.println("WITHDRAW  DEPOSIT  BALANCE");

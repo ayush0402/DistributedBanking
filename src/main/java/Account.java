@@ -36,12 +36,13 @@ public class Account {
                 output.println(0);
                 output.flush();
             }
-            while (true) {//Back end for client where client's request are beign processed
+            while (true) {//Back end for client where client's request are being processed
                 int choice = Integer.parseInt(input.readLine());
                 String result, user1, user2, currentbalance, currentbalance1, currentbalance2, query;
                 float balance1 = 0, balance2 = 0, amount;
                 switch (choice) {
                     case 1:
+                        // deposit money from A to B
                         String n = input.readLine();
                         amount = Float.parseFloat(input.readLine());
                         currentbalance1 = "SELECT balance FROM " + name;
@@ -69,9 +70,10 @@ public class Account {
                             st.executeUpdate(user2);//SQL query to update client's database after deposit
                             result = "DATA COMMITTED AND " + amount + " DEDUCTED FROM YOUR ACCOUNT AND DEPOSITED TO " + n + "'s ACCOUNT";
                             output.println(result);
-                        }//Sendng the result message to the client
+                        }// Sending the result message to the client
                         break;
                     case 2:
+                        // Withdraw money from an account
                         amount = Float.parseFloat(input.readLine());
                         currentbalance = "SELECT balance FROM " + name;
                         ResultSet res3 = st.executeQuery(currentbalance);
@@ -82,7 +84,7 @@ public class Account {
                         if (balance1 < amount) {
                             result = "INSUFFICIENT BALANCE!!\nCANNOT PROCEED YOUR REQUEST";
                             output.println(result);
-                        }//Sendng the result message to the client
+                        }//Sending the result message to the client
                         else {
                             query = "INSERT into " + name + "(withdraw,deposit,balance) values(" + amount + ",0.0," + (balance1 - amount) + ")";
                             st.executeUpdate(query);//sql query to deduct money from account
@@ -91,6 +93,7 @@ public class Account {
                         }//Sendng the result message to the client
                         break;
                     case 3:
+                        // show current balance
                         currentbalance = "SELECT balance FROM " + name;
                         ResultSet res4 = st.executeQuery(currentbalance);
                         while (res4.next())//To get current balance
@@ -102,6 +105,7 @@ public class Account {
                         output.println(result);//Sendng the result message to the client
                         break;
                     case 4:
+                        // Show passbook
                         query = "SELECT withdraw,deposit,balance from " + name;
                         ResultSet res5 = st.executeQuery(query);
                         String s = "";
@@ -116,7 +120,7 @@ public class Account {
                         a = input.readLine();
                         break;
                 }
-                con.commit();//Commiting Data
+                con.commit(); // Committing Data
             }
         } catch (Exception e) {
             System.out.println(e);
@@ -124,8 +128,8 @@ public class Account {
             try {
                 System.out.println("CONNECTION CLOSING FOR CLIENT " + a);
                 client.close();
-            }//closing server connection
-            catch (IOException ie) {//if there's any problem while closing server
+            }// closing server connection
+            catch (IOException ie) {// if there's any problem while closing server
                 System.out.println("Socket Close Error");
             }
         }
