@@ -114,10 +114,9 @@ public class Account {
                         break;
                     case 5:
                         a = input.readLine();
-                        con.commit();//Commiting Data
                         break;
                 }
-
+                con.commit();//Commiting Data
             }
         } catch (Exception e) {
             System.out.println(e);

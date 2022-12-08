@@ -26,6 +26,7 @@ public class Client {
         serverOutput.println(name);//Sending name to the server
         serverOutput.println(username);//Sending username to the server
         serverOutput.println(password);//Sending password to the server
+
         int verify = Integer.parseInt(serverinput.readLine());
         if (verify == 0)//Checks whether the login detail are valid or not. If not then program will terminate.
             System.out.println("LOGIN FAILED\nPLEASE TRY AGAIN LATER!!\nTHANK YOU!!");
